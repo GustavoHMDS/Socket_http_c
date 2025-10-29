@@ -57,7 +57,6 @@ void envia_arquivo(int sockfd, const char *caminho) {
     else {
         fseek(arquivo, 0, SEEK_END);      // vai pro fim do arquivo
         dados_resposta.tamanho_conteudo = ftell(arquivo);
-        char *tipo = strstr(caminho, ".jpeg");
         if(strstr(caminho, ".jpeg") || strstr(caminho, ".jpg")) {
             strcpy(dados_resposta.tipo, "image/jpeg");
         }
@@ -153,9 +152,7 @@ int main(int argc, char *argv[]) {
 
     int sockfd, newsockfd, portno;
     socklen_t clilen; // tamanho 
-    char buffer[256];
     struct sockaddr_in serv_addr, cli_addr; // endereço do servidor e do cliente
-    int num_bytes_msg; // num_bytes_msg é o numero de bytes da mensagem lida ou escrita
     //--------------------------------------------------------------------------------------------
     // Verifica os parametros
     //--------------------------------------------------------------------------------------------

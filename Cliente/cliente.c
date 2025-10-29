@@ -109,7 +109,7 @@ void recebe_http(int sockfd, const char *filename) {
 }
 
 int main(int argc, char *argv[]) {
-    int sockfd, portno, num_bytes_msg;
+    int sockfd, portno;
     // sockfd é um descritor e representa a conexão
     // portno é a porta do servidor
     // num_bytes_msg é o numero de bytes da mensagem lida ou is_text

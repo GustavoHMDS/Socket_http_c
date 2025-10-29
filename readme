@@ -1,0 +1,2 @@
+Este programa usa pthread, por isso é preciso usar -lpthread no final do compilador
+

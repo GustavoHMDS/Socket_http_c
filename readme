@@ -1,4 +1,19 @@
-Este programa usa pthread, por isso é preciso usar -lpthread no final do compilador
+Nesse diretório existem dois executaveis diferentes: Um cliente e um servidor, ambos utilizando protocolo HTTP para comunicação
+A pasta Utils contem as funções relacionadas ao http, elas fazem a construção e interpretação das mensagens http
 
-gcc Servidor/servidor.c Utils/http.c -o servidor -lpthread
-gcc Cliente/cliente.c Utils/http.c -o cliente
+Ambos os executaveis precisam receber a porta que vão funcionar, isso acontece porque a porta 80 do http tem uso restrito.
+Mas caso execute com a root pode usar a porta 80 como entrada.
+Ex: ./Servidor/servidor 80
+    ./Cliente/cliente 80
+
+Ambos funcionam com base no HTTP/1.1 e não vão aceitar outras conexões. O servidor vai enviar o código 505
+O servidor aceita apenas o comando GET, e caso receba outro retorna o código 405
+Em caso do servidor não encontrar o arquivo ele retorna o código 404
+O servidor tambem envia o tipo de arquivo, que pode ser text/plain ou image/jpeg
+O servidor cria uma thread para cada nova conexão
+Caso um arquivo seja muito grande, ele será dividido e enviado em pedaços de 1024 bytes
+Tanto o cliente quanto o servidor esperam o header e depois o conteudo
+O cliente imprime plain/text na tela quando recebe
+Quando o cliente recebe o conteudo de uma pasta, ele tambem salva em um arquivo em branco
+
+O http.h usa uma estrutura http contendo as varias partes do http, que ele usa ou como parametro ou como retorno

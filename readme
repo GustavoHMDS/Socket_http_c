@@ -1,2 +1,4 @@
 Este programa usa pthread, por isso é preciso usar -lpthread no final do compilador
 
+gcc Servidor/servidor.c Utils/http.c -o servidor -lpthread
+gcc Cliente/cliente.c Utils/http.c -o cliente
